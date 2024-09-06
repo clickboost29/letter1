@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Nica 💖</title>
+    <style>
+        body {
+            background-color: #f0e4d7;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        .envelope {
+            position: relative;
+            display: inline-block;
+            width: 450px;
+            height: 300px;
+            background-color: #ff69b4;
+            border-radius: 10px;
+            margin-top: 50px;
+            cursor: pointer;
+        }
+        .flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #ff1493;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            transform-origin: top;
+            transition: transform 1s ease;
+        }
+        .letter-sheet {
+            position: absolute;
+            width: 420px;
+            height: 600px;
+            background-color: white;
+            top: 60%; /* Adjusted position 2cm downwards */
+            left: 15px;
+            transform: translateY(100%);
+            transition: transform 1s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+            opacity: 0;
+            transition: opacity 2s ease;
+            text-align: left;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow-y: auto; /* Add scroll if content is too long */
+        }
+        .options button {
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .options button:hover {
+            background-color: #ff1493;
+        }
+        @keyframes writeText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .letter-content p {
+            opacity: 0;
+            animation: writeText 2s linear forwards;
+            margin-bottom: 20px; /* Add space between paragraphs */
+        }
+        .pen {
+            width: 0;
+            height: 0;
+        }
+        .envelope-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .bottom-left {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 14px;
+            color: #ff69b4;
+        }
+        .cute-icons {
+            font-size: 20px;
+            color: #ff69b4;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, Nica! 💕</h1>
+    <p>You're the most amazing person, and I want to remind you of that every day!</p>
+
+    <div class="options">
+        <p>Do you want to read the love letter?</p>
+        <button onclick="showLoveLetter()">Yes</button>
+        <button onclick="showSecondPrompt()">No</button>
+    </div>
+
+    <div class="second-prompt options" style="display:none;">
+        <p>Are you sure?</p>
+        <button onclick="showThirdPrompt()">Yes</button>
+        <button onclick="showFirstPrompt()">No</button>
+    </div>
+
+    <div class="third-prompt options" style="display:none;">
+        <p>You don't like me?</p>
+        <button onclick="showLoveLetter()">Yes, I like you</button>
+        <button onclick="showLoveLetter()">No, I do like you</button>
+    </div>
+
+    <div class="envelope-container" style="display:none;">
+        <div class="envelope" onclick="openEnvelope()">
+            <div class="flap"></div>
+            <div class="letter-sheet" id="letter-text">
+                <div class="pen"></div>
+                <div class="letter-content">
+                    <p>Hey there, your lover this side 😏😏😏</p>
+                    <p>I would have sent a handwritten love letter, but I don't know your address, so I am doing this. 😶‍🌫️😶‍🌫️</p>
+                    <p>First of all, I want to tell you that I have never developed this many feelings for any other girl in such a short time and never thought that I will (you are the first). 💖</p>
+                    <p>I already told you that you are the nicest girl I have ever met in my life, even though I haven't met you in real yet. 😊 I really really like you, and yeah, I know we are in a courting stage, and I told you that you can take as long as you want (but in my mind, I want that to happen soon), but again, no pressure on you; take your time😉.</p>
+                    <p>I want to tell you that you are very precious to me and always will be the same, I am so grateful to have you in my life😊😊.</p>
+                    <p>When I was with other girls I always had some doubts but even though you are so far from me, I still don't have any doubts like you are talking to some other boy and anything like that, with you I feel very relaxed, calm and obviously happy and we are just talking for a month only, sometimes I found it shocking how is it possible in a month only😝😝.</p>
+                    <p>I hope you will remain happy your whole life🤞🤞.</p>
+                </div>
+                <div class="cute-icons">🌸💌🌟</div>
+                <div class="bottom-left">Your One Piecer ✌️😁😁</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLoveLetter() {
+            document.querySelector('.options').style.display = 'none';
+            document.querySelector('.second-prompt').style.display = 'none';
+            document.querySelector('.third-prompt').style.display = 'none';
+            document.querySelector('.envelope-container').style.display = 'flex';
+        }
+
+        function showSecondPrompt() {
+            document.querySelector('.options').style.display = 'none';
+            document.querySelector('.second-prompt').style.display = 'block';
+        }
+
+        function showFirstPrompt() {
+            document.querySelector('.second-prompt').style.display = 'none';
+            document.querySelector('.options').style.display = 'block';
+        }
+
+        function showThirdPrompt() {
+            document.querySelector('.second-prompt').style.display = 'none';
+            document.querySelector('.third-prompt').style.display = 'block';
+        }
+
+        function openEnvelope() {
+            document.querySelector('.flap').style.transform = 'rotateX(180deg)';
+            setTimeout(function() {
+                document.querySelector('.letter-sheet').style.transform = 'translateY(-100%)';
+                document.querySelector('.letter-sheet').style.opacity = '1';
+                setTimeout(function() {
+                    let paragraphs = document.querySelectorAll('.letter-content p');
+                    for (let i = 0; i < paragraphs.length; i++) {
+                        paragraphs[i].style.animationDelay = `${i * 0.5}s`;
+                        paragraphs[i].style.animation = 'writeText 2s ease forwards';
+                    }
+                }, 1000);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
